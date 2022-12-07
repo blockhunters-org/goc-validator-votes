@@ -27,8 +27,19 @@ async function main() {
     castVotes.sort((a,b) => { if(a.proposalId > b.proposalId) return 1; else return -1});
 
     await new ObjectsToCsv(castVotes).toDisk(config.csv, {});
+
+    const uniqueVotes = castVotes.filter
+
+    return new Promise((resolve) => {
+        const uniqueProposalVotes = [...new Map(castVotes.map(vote =>
+            [vote['proposalId'], vote])).values()];
+        resolve(uniqueProposalVotes.length);
+    });
 }
 
-main().then(() => {
-    console.log("Done.")
+main().then(async (votesCount) => {
+    const res = await axios.get(`${config.api}/cosmos/gov/v1beta1/proposals`);
+    const proposalsCount = res.data.proposals.length;
+    const rate = (votesCount/proposalsCount * 100).toFixed(0)
+    console.log(`You have voted ${votesCount} out of ${proposalsCount} (${rate}%) proposals.\nThe list can be found in ${config.csv}`)
 });
