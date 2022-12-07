@@ -1,0 +1,16 @@
+{
+  "name": "goc-validator-votes",
+  "version": "1.0.0",
+  "description": "Compile a CSV containing validator votes casted on GoC-provider chain",
+  "main": "findVotes.js",
+  "author": {
+    "name": ""
+  },
+  "scripts": {
+    "start": "node findVotes.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "objects-to-csv": "^1.3.6"
+  }
+}
