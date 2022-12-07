@@ -1,7 +1,7 @@
 {
   "name": "goc-validator-votes",
   "version": "1.0.0",
-  "description": "Compile a CSV containing validator votes casted on GoC-provider chain",
+  "description": "Compile a CSV containing validator votes cast on GoC-provider chain",
   "main": "findVotes.js",
   "author": {
     "name": ""
