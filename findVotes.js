@@ -13,7 +13,7 @@ async function main() {
     let votes = [];
 
     for(let i=0;i<config.addresses.length;i++) {
-        const res = await axios.get(`${config.api}/cosmos/tx/v1beta1/txs?events=message.sender='${config.addresses[i]}'`);
+        const res = await axios.get(`${config.api}/cosmos/tx/v1beta1/txs?events=message.sender='${config.addresses[i]}'&events=message.action='/cosmos.gov.v1beta1.MsgVote'`);
         votes = votes.concat(res.data.tx_responses)
     }
 
